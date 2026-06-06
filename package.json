@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.460.0",
     "ml-matrix": "^6.12.0",
