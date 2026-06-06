@@ -12,3 +12,6 @@ dist
 next-env.d.ts
 .tsbuildinfo
 coverage
+
+# Ferramentas internas
+.claude/
