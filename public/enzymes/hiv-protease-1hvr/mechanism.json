@@ -1,0 +1,76 @@
+{
+  "enzymeId": "hiv-protease-1hvr",
+  "overallReaction": "Viral polyprotein-Xaa-Pro/Tyr-Yaa + H2O → two peptides",
+  "mechanismType": "Aspartyl protease — water-mediated, no covalent intermediate",
+  "rateLimitingStep": "Flap closure and water activation",
+  "steps": [
+    {
+      "index": 1,
+      "title": "Flap opening and substrate recognition",
+      "description": "The β-hairpin flaps (residues 43–58 on each protomer) are in an open/semi-open state in the apo enzyme. Substrate enters the active-site cleft, sliding past the flap tips (Ile50/Ile50').",
+      "highlightResidues": [
+        { "chain": "A", "resi": 50 },
+        { "chain": "B", "resi": 50 },
+        { "chain": "A", "resi": 25 },
+        { "chain": "B", "resi": 25 }
+      ],
+      "notes": "Flap dynamics on the µs–ms timescale are now well-characterised by NMR (Torbeev et al., 2011)."
+    },
+    {
+      "index": 2,
+      "title": "Flap closure over bound substrate",
+      "description": "The flaps close over the substrate. A key structural water ('flap water', W301 in crystal structures) bridges the substrate backbone carbonyls to the flap Ile50/Ile50' NH groups. The two Asp25 carboxylates form a quasi-symmetric hydrogen-bonded pair holding the catalytic water between them.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 25 },
+        { "chain": "B", "resi": 25 },
+        { "chain": "A", "resi": 50 },
+        { "chain": "B", "resi": 50 }
+      ]
+    },
+    {
+      "index": 3,
+      "title": "Water activation and nucleophilic attack",
+      "description": "One Asp25 acts as general base, polarising the catalytic water to attack the scissile carbonyl carbon. The other Asp25' is protonated and donates a hydrogen bond to the carbonyl oxygen. A tetrahedral gem-diol intermediate is formed — stabilised by both Asp carboxylates.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 25 },
+        { "chain": "B", "resi": 25 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 25, "atom": "OD2" }],
+      "arrowsTo": [{ "chain": "A", "resi": 25, "atom": "water-H" }]
+    },
+    {
+      "index": 4,
+      "title": "Collapse of gem-diol — C–N bond cleavage",
+      "description": "The protonated Asp25' transfers its proton to the leaving amide nitrogen. The C–N bond breaks, yielding two products: a C-terminal carboxylic acid and an N-terminal amine.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 25 },
+        { "chain": "B", "resi": 25 }
+      ],
+      "arrowsFrom": [{ "chain": "B", "resi": 25, "atom": "OD2-H" }],
+      "arrowsTo": [{ "chain": "B", "resi": 25, "atom": "N-substrate" }]
+    },
+    {
+      "index": 5,
+      "title": "Flap opening and product release",
+      "description": "The flaps open, products diffuse out, and the active site resets. The flap-closure conformational change is the slow step and is the structural target of clinical inhibitors (saquinavir, darunavir, lopinavir), which lock the flaps in the closed state by mimicking the tetrahedral transition state.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 50 },
+        { "chain": "B", "resi": 50 }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "citation": "Brik A, Wong CH. HIV-1 protease: mechanism and drug discovery. Org Biomol Chem 1:5–14 (2003).",
+      "url": "https://doi.org/10.1039/b208248a"
+    },
+    {
+      "citation": "Wlodawer A, Vondrasek J. Inhibitors of HIV-1 protease: a major success of structure-assisted drug design. Annu Rev Biophys Biomol Struct 27:249–284 (1998).",
+      "url": "https://doi.org/10.1146/annurev.biophys.27.1.249"
+    },
+    {
+      "citation": "Torbeev VY et al. Protein conformational dynamics in the mechanism of HIV-1 protease catalysis. Proc Natl Acad Sci USA 108:20982–20987 (2011).",
+      "url": "https://doi.org/10.1073/pnas.1111202108"
+    }
+  ]
+}

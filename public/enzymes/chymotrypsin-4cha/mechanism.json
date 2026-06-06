@@ -1,0 +1,78 @@
+{
+  "enzymeId": "chymotrypsin-4cha",
+  "overallReaction": "Peptide-(Phe/Tyr/Trp)-X + H2O → Peptide-(Phe/Tyr/Trp)-OH + H-X-peptide",
+  "mechanismType": "Two-step covalent catalysis — acylation / deacylation via catalytic triad",
+  "rateLimitingStep": "Deacylation (for amide substrates) or acylation (for poor leaving groups)",
+  "steps": [
+    {
+      "index": 1,
+      "title": "Substrate binding in S1 pocket",
+      "description": "An aromatic residue (Phe/Tyr/Trp) of the substrate inserts into the deep hydrophobic S1 pocket (lined by Ser189, Gly216, Gly226). The scissile carbonyl is positioned above Ser195 Oγ, and its oxygen points into the 'oxyanion hole' — the backbone NH groups of Gly193 and Ser195.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 195 },
+        { "chain": "A", "resi": 57 },
+        { "chain": "A", "resi": 102 },
+        { "chain": "A", "resi": 189 },
+        { "chain": "A", "resi": 193 }
+      ]
+    },
+    {
+      "index": 2,
+      "title": "His57 activates Ser195 — nucleophilic attack",
+      "description": "His57 (whose pKa is tuned by the hydrogen bond from Asp102 carboxylate) abstracts the proton from Ser195 Oγ. The resulting serinate attacks the carbonyl carbon. The tetrahedral oxyanion intermediate TI1 is stabilised by the oxyanion hole (≈5–8 kcal/mol).",
+      "highlightResidues": [
+        { "chain": "A", "resi": 195 },
+        { "chain": "A", "resi": 57 },
+        { "chain": "A", "resi": 102 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 195, "atom": "OG" }],
+      "arrowsTo": [{ "chain": "A", "resi": 195, "atom": "C-carbonyl-substrate" }]
+    },
+    {
+      "index": 3,
+      "title": "Collapse of TI1 — C-terminal amine leaves",
+      "description": "TI1 collapses: the C–N bond breaks and His57+ donates its proton to the departing amine nitrogen, which leaves as the C-terminal peptide product. The N-terminal portion of the substrate remains covalently attached to Ser195 as an ester — the acyl-enzyme intermediate.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 57 },
+        { "chain": "A", "resi": 195 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 57, "atom": "NE2-H" }],
+      "arrowsTo": [{ "chain": "A", "resi": 57, "atom": "N-leaving-group" }]
+    },
+    {
+      "index": 4,
+      "title": "Water enters and His57 activates it",
+      "description": "A water molecule replaces the departed amine. His57, once again neutral, abstracts a proton from water. The hydroxide attacks the ester carbonyl of the acyl-enzyme. A second tetrahedral oxyanion intermediate TI2 is formed, again stabilised by the oxyanion hole.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 57 },
+        { "chain": "A", "resi": 195 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 57, "atom": "NE2" }],
+      "arrowsTo": [{ "chain": "A", "resi": 57, "atom": "water-H" }]
+    },
+    {
+      "index": 5,
+      "title": "Collapse of TI2 — N-terminal product released",
+      "description": "TI2 collapses: the Ser195 Oγ reforms as leaving group and receives the proton from His57+. The N-terminal peptide product (with a new carboxylic acid) diffuses away, and the free enzyme is regenerated with its catalytic triad primed for the next substrate.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 57 },
+        { "chain": "A", "resi": 195 },
+        { "chain": "A", "resi": 102 }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "citation": "Blow DM, Birktoft JJ, Hartley BS. Role of a buried acid group in the mechanism of action of chymotrypsin. Nature 221:337–340 (1969).",
+      "url": "https://doi.org/10.1038/221337a0"
+    },
+    {
+      "citation": "Polgár L. The catalytic triad of serine peptidases. Cell Mol Life Sci 62:2161–2172 (2005).",
+      "url": "https://doi.org/10.1007/s00018-005-5160-x"
+    },
+    {
+      "citation": "Hedstrom L. Serine protease mechanism and specificity. Chem Rev 102:4501–4524 (2002).",
+      "url": "https://doi.org/10.1021/cr000033x"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "enzymeId": "chymotrypsin-4cha",
+  "entries": [
+    {
+      "substrate": "Suc-Ala-Ala-Pro-Phe-p-nitroanilide",
+      "kcat_s": 63,
+      "Km_mM": 0.06,
+      "kcat_over_Km_M_s": 1.05e6,
+      "pH": 7.9,
+      "temperature_C": 25,
+      "source": "Bauer, Biochemistry 1978",
+      "sourceUrl": "https://doi.org/10.1021/bi00601a026"
+    },
+    {
+      "substrate": "N-Ac-L-Phe-ethyl ester",
+      "kcat_s": 28,
+      "Km_mM": 0.18,
+      "kcat_over_Km_M_s": 1.56e5,
+      "pH": 7.9,
+      "temperature_C": 25,
+      "source": "Fersht, Enzyme Structure and Mechanism (reference table)"
+    },
+    {
+      "substrate": "N-Ac-Trp-p-nitrophenyl ester",
+      "kcat_s": 18,
+      "Km_mM": 0.02,
+      "kcat_over_Km_M_s": 9.0e5,
+      "pH": 7.0,
+      "temperature_C": 25,
+      "source": "BRENDA (aggregate)",
+      "sourceUrl": "https://www.brenda-enzymes.org/enzyme.php?ecno=3.4.21.1"
+    }
+  ],
+  "notes": "Chymotrypsin specificity is ~10⁴-fold higher for aromatic vs aliphatic side chains. For amide substrates deacylation is rate-limiting; for activated esters (p-nitrophenyl) acylation becomes rate-limiting and 'burst kinetics' is observed."
+}

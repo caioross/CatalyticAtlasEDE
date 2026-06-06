@@ -1,0 +1,76 @@
+{
+  "enzymeId": "lysozyme-1aki",
+  "overallReaction": "Peptidoglycan-(NAG-β1,4-NAM)n + H2O → Peptidoglycan fragments",
+  "mechanismType": "Double-displacement retaining glycosidase (covalent intermediate)",
+  "rateLimitingStep": "Hydrolysis of the covalent glycosyl-enzyme intermediate",
+  "steps": [
+    {
+      "index": 1,
+      "title": "Substrate binding and distortion",
+      "description": "The peptidoglycan hexasaccharide binds along the A–F subsite cleft. The sugar in subsite D is forced into a strained half-chair / 1,4-boat conformation, pre-organising it for reaction by destabilising the ground state (Koshland's 'substrate distortion').",
+      "highlightResidues": [
+        { "chain": "A", "resi": 35 },
+        { "chain": "A", "resi": 52 },
+        { "chain": "A", "resi": 62 },
+        { "chain": "A", "resi": 63 }
+      ],
+      "notes": "Trp62, Trp63 and Trp108 line the substrate cleft and provide stacking contacts with the sugar rings."
+    },
+    {
+      "index": 2,
+      "title": "Glu35 protonates the glycosidic oxygen",
+      "description": "Glu35, sitting in a hydrophobic microenvironment (elevated pKa ~6.5), donates its proton to the glycosidic oxygen between subsites D and E. This primes departure of the sugar E product.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 35 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 35, "atom": "OE2" }],
+      "arrowsTo": [{ "chain": "A", "resi": 35, "atom": "O-glycosidic" }]
+    },
+    {
+      "index": 3,
+      "title": "Asp52 attacks C1 — covalent glycosyl-enzyme forms",
+      "description": "Asp52 carboxylate attacks the C1 anomeric carbon of the sugar at subsite D through a transition state with strong oxocarbenium character. The leaving group (sugar E onward) departs. A covalent β-glycosyl-enzyme intermediate is formed (Vocadlo & Davies, 2001 — revised Koshland mechanism).",
+      "highlightResidues": [
+        { "chain": "A", "resi": 52 },
+        { "chain": "A", "resi": 35 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 52, "atom": "OD2" }],
+      "arrowsTo": [{ "chain": "A", "resi": 52, "atom": "C1-sugar-D" }]
+    },
+    {
+      "index": 4,
+      "title": "Glu35 activates water",
+      "description": "Glu35, now deprotonated, acts as the general base and abstracts a proton from an incoming water molecule positioned in the vacated subsite E.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 35 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 35, "atom": "OE2" }],
+      "arrowsTo": [{ "chain": "A", "resi": 35, "atom": "water-H" }]
+    },
+    {
+      "index": 5,
+      "title": "Water hydrolyses the glycosyl-enzyme",
+      "description": "The activated hydroxide attacks C1 of the covalent intermediate through a second oxocarbenium-like transition state. The C1-Asp52 bond breaks, releasing the sugar D product with net retention of configuration.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 52 },
+        { "chain": "A", "resi": 35 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 52, "atom": "OD2" }],
+      "arrowsTo": [{ "chain": "A", "resi": 52, "atom": "C1-sugar-D" }]
+    }
+  ],
+  "references": [
+    {
+      "citation": "Vocadlo DJ, Davies GJ, Laine R, Withers SG. Catalysis by hen egg-white lysozyme proceeds via a covalent intermediate. Nature 412:835–838 (2001).",
+      "url": "https://doi.org/10.1038/35090602"
+    },
+    {
+      "citation": "Phillips DC. The hen egg-white lysozyme molecule. Proc Natl Acad Sci USA 57:483–495 (1967).",
+      "url": "https://doi.org/10.1073/pnas.57.3.483"
+    },
+    {
+      "citation": "Koshland DE. Stereochemistry and the mechanism of enzymatic reactions. Biol Rev 28:416–436 (1953).",
+      "url": "https://doi.org/10.1111/j.1469-185X.1953.tb01386.x"
+    }
+  ]
+}

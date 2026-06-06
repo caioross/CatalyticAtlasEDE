@@ -1,0 +1,88 @@
+{
+  "enzymeId": "sars2-mpro-6lu7",
+  "overallReaction": "Polyprotein-Leu-Gln↓(Ser/Ala/Gly)-Xaa + H2O → two peptides",
+  "mechanismType": "Cysteine-histidine dyad — covalent acyl-enzyme (thioester) intermediate",
+  "rateLimitingStep": "Acylation (for most peptide substrates)",
+  "steps": [
+    {
+      "index": 1,
+      "title": "Substrate recognition in S1–S4 pockets",
+      "description": "Mpro recognises the Leu-Gln↓(Ser/Ala/Gly) motif. Gln P1 hydrogen-bonds to His163, Glu166 and Phe140 in the S1 subsite — the Gln specificity is absolute and is what distinguishes Mpro from host cysteine proteases. Hydrophobic P2 (usually Leu) inserts into a pocket lined by His41, Met49 and Tyr54.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 145 },
+        { "chain": "A", "resi": 41 },
+        { "chain": "A", "resi": 163 },
+        { "chain": "A", "resi": 166 },
+        { "chain": "A", "resi": 140 }
+      ],
+      "notes": "Mpro is only catalytically active as a homodimer; the N-terminal residues (the 'N-finger') of each protomer organise the S1 pocket of the other."
+    },
+    {
+      "index": 2,
+      "title": "Thiolate formation — His41 deprotonates Cys145",
+      "description": "In the resting enzyme Cys145 (pKa ~8) and His41 (pKa ~6) exist as an ion-pair (thiolate-imidazolium) within the active site. Substrate binding stabilises this reactive form.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 145 },
+        { "chain": "A", "resi": 41 }
+      ]
+    },
+    {
+      "index": 3,
+      "title": "Nucleophilic attack → tetrahedral intermediate",
+      "description": "The Cys145 thiolate attacks the scissile carbonyl of Gln P1. The resulting tetrahedral oxyanion is stabilised by the oxyanion hole (backbone NH of Gly143, Ser144, Cys145).",
+      "highlightResidues": [
+        { "chain": "A", "resi": 145 },
+        { "chain": "A", "resi": 143 },
+        { "chain": "A", "resi": 144 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 145, "atom": "SG" }],
+      "arrowsTo": [{ "chain": "A", "resi": 145, "atom": "C-carbonyl-substrate" }]
+    },
+    {
+      "index": 4,
+      "title": "Collapse → acyl-enzyme (thioester) + amine product",
+      "description": "The oxyanion collapses. His41 (now imidazolium) donates its proton to the departing amine nitrogen. The C-terminal peptide diffuses out. The N-terminal portion of the substrate remains as a thioester covalently bound to Cys145 — the acyl-enzyme intermediate.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 145 },
+        { "chain": "A", "resi": 41 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 41, "atom": "NE2-H" }],
+      "arrowsTo": [{ "chain": "A", "resi": 41, "atom": "N-leaving-group" }]
+    },
+    {
+      "index": 5,
+      "title": "Water attacks acyl-enzyme",
+      "description": "A water molecule, activated by His41 (general base again), attacks the thioester carbonyl. A second tetrahedral intermediate is stabilised by the oxyanion hole.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 145 },
+        { "chain": "A", "resi": 41 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 41, "atom": "NE2" }],
+      "arrowsTo": [{ "chain": "A", "resi": 41, "atom": "water-H" }]
+    },
+    {
+      "index": 6,
+      "title": "Acyl-enzyme hydrolysis — N-terminal product released",
+      "description": "The second oxyanion collapses. His41+ donates its proton to the Cys145 thiolate, breaking the C–S bond. The N-terminal peptide (carboxylic acid) leaves, and the free dimer is ready for the next substrate.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 145 },
+        { "chain": "A", "resi": 41 }
+      ],
+      "notes": "Nirmatrelvir (active ingredient of Paxlovid) traps step 3 as a stable covalent adduct — a nitrile warhead forms a thioimidate with Cys145 that mimics the tetrahedral transition state."
+    }
+  ],
+  "references": [
+    {
+      "citation": "Jin Z et al. Structure of Mpro from SARS-CoV-2 and discovery of its inhibitors. Nature 582:289–293 (2020).",
+      "url": "https://doi.org/10.1038/s41586-020-2223-y"
+    },
+    {
+      "citation": "Owen DR et al. An oral SARS-CoV-2 Mpro inhibitor clinical candidate for the treatment of COVID-19. Science 374:1586–1593 (2021).",
+      "url": "https://doi.org/10.1126/science.abl4784"
+    },
+    {
+      "citation": "Anand K et al. Coronavirus main proteinase (3CLpro) structure: basis for design of anti-SARS drugs. Science 300:1763–1767 (2003).",
+      "url": "https://doi.org/10.1126/science.1085658"
+    }
+  ]
+}

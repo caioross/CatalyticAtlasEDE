@@ -1,0 +1,26 @@
+{
+  "enzymeId": "sars2-mpro-6lu7",
+  "entries": [
+    {
+      "substrate": "MCA-AVLQ↓SGFR-Lys(Dnp)-K (FRET)",
+      "kcat_s": 0.3,
+      "Km_mM": 0.028,
+      "kcat_over_Km_M_s": 1.07e4,
+      "pH": 7.3,
+      "temperature_C": 25,
+      "source": "Zhang et al., Science 2020",
+      "sourceUrl": "https://doi.org/10.1126/science.abb3405"
+    },
+    {
+      "substrate": "Ac-Abu-Tle-Leu-Gln-MCA",
+      "kcat_s": 0.045,
+      "Km_mM": 0.16,
+      "kcat_over_Km_M_s": 281,
+      "pH": 7.5,
+      "temperature_C": 25,
+      "source": "Kneller et al., Nat. Commun. 2020",
+      "sourceUrl": "https://doi.org/10.1038/s41467-020-16954-7"
+    }
+  ],
+  "notes": "Mpro is a relatively slow cysteine protease (kcat on the order of 0.1 s⁻¹). It compensates with strong substrate specificity for the Leu-Gln motif. Dimerisation is essential — monomeric Mpro is catalytically dead, making the dimer interface an allosteric drug target."
+}

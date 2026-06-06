@@ -1,0 +1,25 @@
+{
+  "enzymeId": "hiv-protease-1hvr",
+  "entries": [
+    {
+      "substrate": "H-Lys-Ala-Arg-Val-Nle-Phe(pNO2)-Glu-Ala-Nle-NH2 (chromogenic)",
+      "kcat_s": 5.6,
+      "Km_mM": 0.036,
+      "kcat_over_Km_M_s": 1.56e5,
+      "pH": 5.6,
+      "temperature_C": 37,
+      "source": "Richards et al., FEBS Lett 1990",
+      "sourceUrl": "https://doi.org/10.1016/0014-5793(90)80927-A"
+    },
+    {
+      "substrate": "Ac-Ser-Gln-Asn-Tyr-Pro-Ile-Val-NH2 (MA/CA site mimic)",
+      "kcat_s": 8.1,
+      "Km_mM": 0.13,
+      "kcat_over_Km_M_s": 6.2e4,
+      "pH": 5.5,
+      "temperature_C": 37,
+      "source": "Tözsér et al., FEBS Lett 1991"
+    }
+  ],
+  "notes": "HIV-1 PR operates optimally at pH 4.5–6, reflecting its retroviral origin. Single active-site mutations (D30N, V82A, I84V, L90M) confer resistance to clinical inhibitors — a paradigmatic example of drug resistance evolution."
+}

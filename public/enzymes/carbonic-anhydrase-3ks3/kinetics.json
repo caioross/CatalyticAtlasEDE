@@ -1,0 +1,35 @@
+{
+  "enzymeId": "carbonic-anhydrase-3ks3",
+  "entries": [
+    {
+      "substrate": "CO2 (hydration direction)",
+      "kcat_s": 1.4e6,
+      "Km_mM": 9.3,
+      "kcat_over_Km_M_s": 1.5e8,
+      "pH": 9.0,
+      "temperature_C": 25,
+      "source": "Khalifah, J. Biol. Chem. 1971",
+      "sourceUrl": "https://doi.org/10.1016/S0021-9258(18)62016-2"
+    },
+    {
+      "substrate": "HCO3⁻ (dehydration direction)",
+      "kcat_s": 4e5,
+      "Km_mM": 26,
+      "kcat_over_Km_M_s": 1.5e7,
+      "pH": 7.5,
+      "temperature_C": 25,
+      "source": "Khalifah, J. Biol. Chem. 1971",
+      "sourceUrl": "https://doi.org/10.1016/S0021-9258(18)62016-2"
+    },
+    {
+      "substrate": "p-Nitrophenyl acetate (esterase activity)",
+      "kcat_s": 0.04,
+      "Km_mM": 1.4,
+      "kcat_over_Km_M_s": 28.6,
+      "pH": 7.5,
+      "temperature_C": 25,
+      "source": "Verpoorte et al., J. Biol. Chem. 1967"
+    }
+  ],
+  "notes": "CA II is one of the fastest enzymes known — kcat approaches 10^6 s⁻¹. The proton-transfer step (via His64 water wire) is rate-limiting at [CO2] above ~5 mM. Inhibitors that replace the Zn-bound water (sulfonamides) are clinically used as diuretics and for glaucoma."
+}

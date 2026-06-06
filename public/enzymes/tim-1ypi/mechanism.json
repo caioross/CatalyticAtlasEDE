@@ -1,0 +1,77 @@
+{
+  "enzymeId": "tim-1ypi",
+  "overallReaction": "D-glyceraldehyde-3-phosphate ⇌ Dihydroxyacetone phosphate",
+  "mechanismType": "General acid/base with cis-enediolate intermediate",
+  "rateLimitingStep": "At neutral pH, intramolecular proton transfer between C1 and C2 (or diffusion for GAP→DHAP)",
+  "steps": [
+    {
+      "index": 1,
+      "title": "Substrate binds and the Ω-loop closes",
+      "description": "DHAP (or GAP) binds in the active site with its phosphate anchored by Asn11, Lys13 and the N-terminus of helix α6. Loop 6 (residues 166–176) closes over the active site, sequestering the substrate from bulk solvent and pre-organising the electrostatics. Loop 7 (residues 208–213) also contributes.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 165 },
+        { "chain": "A", "resi": 95 },
+        { "chain": "A", "resi": 13 },
+        { "chain": "A", "resi": 11 }
+      ],
+      "notes": "Loop closure is essential: open-loop TIM is catalytically inert and leaks methylglyoxal via enediolate decomposition."
+    },
+    {
+      "index": 2,
+      "title": "Glu165 abstracts the pro-R proton from C1 of DHAP",
+      "description": "Glu165 carboxylate (general base) abstracts the pro-R hydrogen from C1 of DHAP. His95 donates a hydrogen bond to the C2 carbonyl, polarising it. Lys13 stabilises the developing negative charge.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 165 },
+        { "chain": "A", "resi": 95 },
+        { "chain": "A", "resi": 13 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 165, "atom": "OE2" }],
+      "arrowsTo": [{ "chain": "A", "resi": 165, "atom": "C1-H-substrate" }]
+    },
+    {
+      "index": 3,
+      "title": "cis-Enediolate intermediate",
+      "description": "A planar cis-enediolate intermediate is formed, stabilised by hydrogen bonds from His95 and Lys13 and by the electrostatic environment of the closed loop.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 95 },
+        { "chain": "A", "resi": 13 },
+        { "chain": "A", "resi": 165 }
+      ],
+      "notes": "The enediolate is not released into solvent — loop closure prevents this (avoiding methylglyoxal formation, which would be cytotoxic)."
+    },
+    {
+      "index": 4,
+      "title": "Glu165 donates proton to C2",
+      "description": "The protonated Glu165 delivers the proton back to C2 on the opposite face, producing GAP. Net effect: stereospecific isomerisation with 1,2-proton shift mediated by a single residue.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 165 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 165, "atom": "OE2-H" }],
+      "arrowsTo": [{ "chain": "A", "resi": 165, "atom": "C2-substrate" }]
+    },
+    {
+      "index": 5,
+      "title": "Loop opens, product releases",
+      "description": "Loop 6 opens, GAP diffuses out, and the enzyme is reset. kcat/KM for GAP → DHAP approaches 10⁸ M⁻¹s⁻¹, within an order of magnitude of the diffusion limit — TIM is a 'kinetically perfect' enzyme.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 165 },
+        { "chain": "A", "resi": 170 },
+        { "chain": "A", "resi": 171 }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "citation": "Knowles JR. Enzyme catalysis: not different, just better. Nature 350:121–124 (1991).",
+      "url": "https://doi.org/10.1038/350121a0"
+    },
+    {
+      "citation": "Richard JP. A paradigm for enzyme-catalyzed proton transfer at carbon: triosephosphate isomerase. Biochemistry 51:2652–2661 (2012).",
+      "url": "https://doi.org/10.1021/bi300195b"
+    },
+    {
+      "citation": "Wierenga RK, Kapetaniou EG, Venkatesan R. Triosephosphate isomerase: a highly evolved biocatalyst. Cell Mol Life Sci 67:3961–3982 (2010).",
+      "url": "https://doi.org/10.1007/s00018-010-0473-9"
+    }
+  ]
+}

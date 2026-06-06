@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-stage-950 text-paper-100 antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(232,184,109,0.05), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(123,168,163,0.04), transparent 70%);
+    background-attachment: fixed;
+  }
+  ::selection {
+    background-color: rgba(232, 184, 109, 0.35);
+    color: #fff;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2a3042 transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #2a3042;
+    border-radius: 4px;
+  }
+  *::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+    font-optical-sizing: auto;
+  }
+}
+
+@layer components {
+  .prose-atlas {
+    @apply text-paper-100 leading-relaxed;
+  }
+  .prose-atlas strong {
+    @apply text-paper-50;
+  }
+  .prose-atlas a {
+    @apply text-catalytic-gold underline-offset-2 hover:underline;
+  }
+
+  /* soft panel — thin hairline + gentle inner highlight for a paper-on-stage feel */
+  .panel {
+    @apply relative rounded-lg border border-stage-700/60 bg-stage-900/70 backdrop-blur-[2px] shadow-panel;
+  }
+  .panel-flush {
+    @apply relative rounded-lg border border-stage-700/60 bg-stage-900/40;
+  }
+
+  /* editorial heading — small caps letter-spaced label above a serif title */
+  .eyebrow {
+    @apply font-mono text-2xs uppercase tracking-widest-plus text-paper-300;
+  }
+
+  /* a hairline horizontal rule like a journal */
+  .rule {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-stage-600 to-transparent;
+  }
+
+  /* grain overlay helper */
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/></svg>");
+    animation: grain 8s steps(10) infinite;
+  }
+
+  /* a "kicker" pill — the editorial tag for catalytic / kinetic / dynamics sections */
+  .kicker {
+    @apply inline-flex items-center gap-1.5 rounded-sm border border-stage-600/60 bg-stage-800/60 px-2 py-0.5 font-mono text-2xs uppercase tracking-widest text-paper-200;
+  }
+
+  /* buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-stage-600/80 bg-stage-800/80 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-paper-100 transition hover:border-catalytic-gold/60 hover:bg-stage-700 hover:text-catalytic-gold;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-catalytic-gold/40 bg-catalytic-gold/15 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-catalytic-gold transition hover:bg-catalytic-gold/25;
+  }
+  .btn-quiet {
+    @apply inline-flex items-center gap-1.5 rounded px-2 py-1 font-mono text-2xs uppercase tracking-widest text-paper-300 transition hover:bg-stage-800 hover:text-paper-100;
+  }
+
+  /* numeric data display — tabular, aligned */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum', 'zero';
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "enzymeId": "lysozyme-1aki",
+  "entries": [
+    {
+      "substrate": "Micrococcus lysodeikticus cell walls",
+      "kcat_s": 0.5,
+      "Km_mM": 0.006,
+      "pH": 5.3,
+      "temperature_C": 25,
+      "source": "BRENDA (aggregate literature)",
+      "sourceUrl": "https://www.brenda-enzymes.org/enzyme.php?ecno=3.2.1.17"
+    },
+    {
+      "substrate": "(GlcNAc)6 chitohexaose",
+      "kcat_s": 0.5,
+      "Km_mM": 0.08,
+      "kcat_over_Km_M_s": 6250,
+      "pH": 5.0,
+      "temperature_C": 25,
+      "source": "Maksimainen et al., J. Mol. Biol. 2013",
+      "sourceUrl": "https://doi.org/10.1016/j.jmb.2012.12.019"
+    },
+    {
+      "substrate": "p-Nitrophenyl-(GlcNAc)2",
+      "kcat_s": 0.022,
+      "Km_mM": 0.65,
+      "pH": 5.0,
+      "temperature_C": 40,
+      "source": "SABIO-RK",
+      "sourceUrl": "https://sabiork.h-its.org/"
+    }
+  ],
+  "notes": "Lysozyme turnover is slow for a hydrolase. Hydrolysis of the covalent glycosyl-enzyme intermediate is the rate-limiting step at neutral pH. Activity peaks near pH 5."
+}

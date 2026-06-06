@@ -1,0 +1,79 @@
+{
+  "enzymeId": "carbonic-anhydrase-3ks3",
+  "overallReaction": "CO2 + H2O ⇌ HCO3⁻ + H⁺",
+  "mechanismType": "Zinc-hydroxide mechanism with intramolecular proton shuttle",
+  "rateLimitingStep": "Intramolecular proton transfer from Zn-H2O to His64 via ordered water network (the 'proton wire')",
+  "steps": [
+    {
+      "index": 1,
+      "title": "Resting state — Zn-bound hydroxide",
+      "description": "At physiological pH the zinc-bound water is mostly deprotonated (pKa ~6.8, drastically lowered from bulk by Zn²⁺ coordination and the Thr199–Glu106 hydrogen-bond network). The tetrahedrally coordinated Zn–OH⁻ is the active nucleophile.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 94 },
+        { "chain": "A", "resi": 96 },
+        { "chain": "A", "resi": 119 },
+        { "chain": "A", "resi": 199 },
+        { "chain": "A", "resi": 106 }
+      ]
+    },
+    {
+      "index": 2,
+      "title": "CO2 binds the hydrophobic pocket",
+      "description": "CO2 enters a hydrophobic pocket flanked by Val121, Val143 and Leu198, positioned directly above the Zn–OH⁻. Thr199 orients the hydroxide for in-line attack and hydrogen-bonds the bicarbonate product.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 199 },
+        { "chain": "A", "resi": 121 },
+        { "chain": "A", "resi": 143 },
+        { "chain": "A", "resi": 198 }
+      ]
+    },
+    {
+      "index": 3,
+      "title": "Zn-OH⁻ attacks CO2 → Zn-HCO3⁻",
+      "description": "The zinc-hydroxide performs nucleophilic attack on the electrophilic carbon of CO2 to give a bicarbonate ion bound to zinc through its two oxygens (Lindskog vs Lipscomb mechanisms debate which oxygen binds; current consensus favours a short transient Lindskog-type intermediate).",
+      "highlightResidues": [
+        { "chain": "A", "resi": 94 },
+        { "chain": "A", "resi": 96 },
+        { "chain": "A", "resi": 119 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 199, "atom": "OH-Zn" }],
+      "arrowsTo": [{ "chain": "A", "resi": 199, "atom": "C-CO2" }]
+    },
+    {
+      "index": 4,
+      "title": "Water displaces bicarbonate",
+      "description": "A water molecule replaces the zinc-bound bicarbonate. HCO3⁻ diffuses out of the pocket. The zinc is now coordinated by three His and one H2O (pKa ~7 — partly deprotonated at physiological pH).",
+      "highlightResidues": [
+        { "chain": "A", "resi": 94 },
+        { "chain": "A", "resi": 96 },
+        { "chain": "A", "resi": 119 }
+      ]
+    },
+    {
+      "index": 5,
+      "title": "Proton shuttle: His64 via the water wire",
+      "description": "The rate-limiting step at high substrate concentrations. The zinc-bound water must lose a proton to regenerate Zn-OH⁻. The proton is relayed through an ordered chain of 2–3 water molecules to His64, which in turn transfers it to bulk solvent. His64 adopts 'in' and 'out' rotameric states to act as a mobile shuttle.",
+      "highlightResidues": [
+        { "chain": "A", "resi": 64 },
+        { "chain": "A", "resi": 199 }
+      ],
+      "arrowsFrom": [{ "chain": "A", "resi": 64, "atom": "NE2" }],
+      "arrowsTo": [{ "chain": "A", "resi": 64, "atom": "water-proton" }],
+      "notes": "Mutation of His64 to Ala slows kcat ~30-fold and is rescued by exogenous imidazole — the classic evidence for the proton-shuttle role."
+    }
+  ],
+  "references": [
+    {
+      "citation": "Silverman DN, Lindskog S. The catalytic mechanism of carbonic anhydrase: implications of a rate-limiting protolysis of water. Acc Chem Res 21:30–36 (1988).",
+      "url": "https://doi.org/10.1021/ar00145a005"
+    },
+    {
+      "citation": "Krishnamurthy VM et al. Carbonic anhydrase as a model for biophysical and physical-organic studies of proteins and protein-ligand binding. Chem Rev 108:946–1051 (2008).",
+      "url": "https://doi.org/10.1021/cr050262p"
+    },
+    {
+      "citation": "Fisher SZ et al. Atomic crystal and molecular dynamics simulation analyses of human carbonic anhydrase II. Biochemistry 46:2930–2937 (2007).",
+      "url": "https://doi.org/10.1021/bi062066y"
+    }
+  ]
+}

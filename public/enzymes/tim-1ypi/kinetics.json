@@ -1,0 +1,26 @@
+{
+  "enzymeId": "tim-1ypi",
+  "entries": [
+    {
+      "substrate": "D-glyceraldehyde-3-phosphate (GAP)",
+      "kcat_s": 4300,
+      "Km_mM": 0.47,
+      "kcat_over_Km_M_s": 9.1e6,
+      "pH": 7.6,
+      "temperature_C": 30,
+      "source": "Albery & Knowles, Biochemistry 1976",
+      "sourceUrl": "https://doi.org/10.1021/bi00667a028"
+    },
+    {
+      "substrate": "Dihydroxyacetone phosphate (DHAP)",
+      "kcat_s": 430,
+      "Km_mM": 0.97,
+      "kcat_over_Km_M_s": 4.4e5,
+      "pH": 7.6,
+      "temperature_C": 30,
+      "source": "Albery & Knowles, Biochemistry 1976",
+      "sourceUrl": "https://doi.org/10.1021/bi00667a028"
+    }
+  ],
+  "notes": "kcat/KM for GAP → DHAP is ~10^7–10^8 M⁻¹s⁻¹, approaching the diffusion limit. The reaction is near-thermoneutral (Keq ≈ 22 favouring DHAP)."
+}
