@@ -15,9 +15,24 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const e = getEnzyme(id);
   if (!e) return { title: 'Not found' };
+  const name = e.shortName ?? e.name;
+  const title = `${name} (${e.pdbId}) — Structure, Mechanism & Dynamics`;
   return {
-    title: `${e.shortName ?? e.name} — Catalytic Atlas`,
-    description: e.summary,
+    title,
+    description: `${e.summary} Explore the 3D structure, catalytic mechanism, kinetics (EC ${e.ecNumber}) and computed dynamics of ${e.name} from ${e.organism}.`,
+    keywords: [e.name, e.shortName, e.pdbId, `EC ${e.ecNumber}`, e.organism, e.class, ...e.tags].filter(Boolean) as string[],
+    alternates: { canonical: `/enzyme/${id}` },
+    openGraph: {
+      title: `${name} — Catalytic Atlas`,
+      description: e.keyInsight ?? e.summary,
+      type: 'article',
+      url: `/enzyme/${id}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${name} — Catalytic Atlas`,
+      description: e.keyInsight ?? e.summary,
+    },
   };
 }
 
@@ -41,13 +56,31 @@ export default async function EnzymePage({ params }: { params: Promise<{ id: str
     loadJson<KineticsDoc>(path.join(base, 'kinetics.json')),
   ]);
 
+  const enzymeJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: enzyme.name,
+    alternateName: enzyme.shortName,
+    description: enzyme.summary,
+    inDefinedTermSet: 'https://catalytic-atlas.vercel.app',
+    identifier: `EC ${enzyme.ecNumber}`,
+    sameAs: [
+      `https://www.rcsb.org/structure/${enzyme.pdbId}`,
+      enzyme.uniprot ? `https://www.uniprot.org/uniprotkb/${enzyme.uniprot}` : null,
+    ].filter(Boolean),
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(enzymeJsonLd) }}
+      />
       <Link
         href="/"
-        className="mb-6 inline-flex items-center gap-1.5 font-mono text-2xs uppercase tracking-widest text-ink-400 hover:text-accent-cyan"
+        className="group mb-6 inline-flex items-center gap-1.5 font-mono text-2xs uppercase tracking-widest-plus text-paper-400 transition hover:text-catalytic-gold"
       >
-        <ArrowLeft size={12} />
+        <ArrowLeft size={12} className="transition group-hover:-translate-x-0.5" />
         back to catalog
       </Link>
       <EnzymeDetailView enzyme={enzyme} mechanism={mechanism} kinetics={kinetics} />

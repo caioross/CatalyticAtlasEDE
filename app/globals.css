@@ -7,13 +7,15 @@
 @layer base {
   html {
     color-scheme: dark;
+    scroll-behavior: smooth;
   }
   body {
     @apply bg-stage-950 text-paper-100 antialiased;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
     background-image:
-      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(232,184,109,0.05), transparent 60%),
-      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(123,168,163,0.04), transparent 70%);
+      radial-gradient(ellipse 90% 50% at 50% -5%, rgba(232,184,109,0.07), transparent 55%),
+      radial-gradient(ellipse 55% 35% at 100% 100%, rgba(78,158,140,0.05), transparent 65%),
+      radial-gradient(ellipse 40% 30% at 0% 70%, rgba(139,90,159,0.03), transparent 60%);
     background-attachment: fixed;
   }
   ::selection {
@@ -25,8 +27,8 @@
     scrollbar-color: #2a3042 transparent;
   }
   *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
   *::-webkit-scrollbar-thumb {
     background-color: #2a3042;
@@ -38,6 +40,14 @@
   h1, h2, h3, h4 {
     @apply font-display;
     font-optical-sizing: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -71,15 +81,25 @@
   }
 
   /* grain overlay helper */
+  .grain {
+    position: relative;
+    overflow: hidden;
+  }
   .grain::before {
     content: '';
     position: absolute;
-    inset: 0;
+    inset: -50%;
     pointer-events: none;
-    opacity: 0.06;
+    opacity: 0.045;
     mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/></svg>");
-    animation: grain 8s steps(10) infinite;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/></svg>");
+    background-size: 200px 200px;
+    animation: grain 12s steps(10) infinite;
+    z-index: 0;
+  }
+  .grain > * {
+    position: relative;
+    z-index: 1;
   }
 
   /* a "kicker" pill — the editorial tag for catalytic / kinetic / dynamics sections */

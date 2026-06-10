@@ -107,7 +107,7 @@ export default function AboutPage() {
           <ArrowRight size={14} />
         </Link>
         <a
-          href="https://github.com"
+          href="https://github.com/caioross/CatalyticAtlasEDE"
           target="_blank"
           rel="noreferrer"
           className="btn-quiet"

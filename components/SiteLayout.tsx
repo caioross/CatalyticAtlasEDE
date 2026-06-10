@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import { Github } from 'lucide-react';
+import ClientNav from '@/components/ClientNav';
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-stage-950 text-paper-100">
-      <header className="sticky top-0 z-40 border-b border-stage-800/80 bg-stage-950/80 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
+      <header className="sticky top-0 z-40 border-b border-stage-800/80 bg-stage-950/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-3.5">
           <Link href="/" className="group flex items-center gap-3">
             <Monogram />
             <div className="leading-tight">
@@ -16,51 +16,85 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
             </div>
           </Link>
 
-          <nav className="flex items-center gap-0.5 font-mono text-xs">
-            <NavLink href="/">Catalog</NavLink>
-            <NavLink href="/workbench">Workbench</NavLink>
-            <NavLink href="/about">About</NavLink>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noreferrer"
-              className="ml-3 rounded-md border border-stage-700/80 p-1.5 text-paper-300 transition hover:border-catalytic-gold/50 hover:text-catalytic-gold"
-              aria-label="Source on GitHub"
-            >
-              <Github size={14} />
-            </a>
-          </nav>
+          <ClientNav />
         </div>
       </header>
 
       <main className="mx-auto max-w-7xl px-6 py-10">{children}</main>
 
-      <footer className="mt-24 border-t border-stage-800/80 bg-stage-900/40">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-8 text-2xs font-mono uppercase tracking-widest-plus text-paper-400 md:flex-row md:items-center md:justify-between">
-          <div>Catalytic Atlas · browser-native enzymology, open access</div>
-          <div>Sources: RCSB PDB · UniProt · M-CSA · BRENDA · peer-reviewed literature</div>
+      <footer className="mt-24 border-t border-stage-800/80 bg-stage-900/30">
+        <div className="mx-auto max-w-7xl px-6 py-10">
+          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <Monogram small />
+                <span className="font-display text-base text-paper-50">Catalytic Atlas</span>
+              </div>
+              <p className="max-w-xs font-mono text-2xs uppercase tracking-widest-plus text-paper-400 leading-relaxed">
+                Browser-native enzymology · open access · open data
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-8 font-mono text-2xs uppercase tracking-widest-plus md:grid-cols-3">
+              <div className="space-y-2.5">
+                <div className="text-paper-300">Explore</div>
+                <FooterLink href="/">Catalog</FooterLink>
+                <FooterLink href="/workbench">Workbench</FooterLink>
+                <FooterLink href="/about">About</FooterLink>
+              </div>
+              <div className="space-y-2.5">
+                <div className="text-paper-300">Data sources</div>
+                <FooterExtLink href="https://www.rcsb.org">RCSB PDB</FooterExtLink>
+                <FooterExtLink href="https://www.uniprot.org">UniProt</FooterExtLink>
+                <FooterExtLink href="https://www.ebi.ac.uk/thornton-srv/m-csa/">M-CSA</FooterExtLink>
+                <FooterExtLink href="https://sabiork.h-its.org">SABIO-RK</FooterExtLink>
+              </div>
+              <div className="space-y-2.5">
+                <div className="text-paper-300">Project</div>
+                <FooterExtLink href="https://github.com/caioross/CatalyticAtlasEDE">GitHub</FooterExtLink>
+                <FooterExtLink href="https://github.com/caioross/CatalyticAtlasEDE/issues">Issues</FooterExtLink>
+                <FooterExtLink href="https://github.com/caioross/CatalyticAtlasEDE/blob/main/README.md">Docs</FooterExtLink>
+              </div>
+            </div>
+          </div>
+
+          <div className="rule mt-8" />
+          <div className="mt-4 flex flex-col gap-1 font-mono text-2xs uppercase tracking-widest-plus text-paper-500 md:flex-row md:justify-between">
+            <span>Code: MIT · Data: CC-BY 4.0 · Structures: RCSB public domain</span>
+            <span>Built with Next.js · Mol* · Three.js · ANM</span>
+          </div>
         </div>
       </footer>
     </div>
   );
 }
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link
-      href={href}
-      className="rounded-md px-3 py-1.5 uppercase tracking-widest-plus text-paper-300 transition hover:bg-stage-800/70 hover:text-paper-50"
-    >
-      {children}
-    </Link>
+    <div>
+      <Link href={href} className="text-paper-400 transition hover:text-catalytic-gold">
+        {children}
+      </Link>
+    </div>
   );
 }
 
-function Monogram() {
+function FooterExtLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <div className="relative flex h-9 w-9 items-center justify-center rounded-md border border-catalytic-gold/30 bg-gradient-to-br from-stage-850 to-stage-900 shadow-panel">
-      <svg viewBox="0 0 24 24" className="h-5 w-5 text-catalytic-gold" fill="none" strokeWidth={1.6} stroke="currentColor" strokeLinecap="round">
-        {/* Double-helix stylized monogram */}
+    <div>
+      <a href={href} target="_blank" rel="noreferrer" className="text-paper-400 transition hover:text-catalytic-gold">
+        {children}
+      </a>
+    </div>
+  );
+}
+
+function Monogram({ small }: { small?: boolean }) {
+  const size = small ? 'h-7 w-7' : 'h-9 w-9';
+  const iconSize = small ? 'h-4 w-4' : 'h-5 w-5';
+  return (
+    <div className={`relative flex ${size} shrink-0 items-center justify-center rounded-md border border-catalytic-gold/30 bg-gradient-to-br from-stage-850 to-stage-900 shadow-panel`}>
+      <svg viewBox="0 0 24 24" className={`${iconSize} text-catalytic-gold`} fill="none" strokeWidth={1.6} stroke="currentColor" strokeLinecap="round">
         <path d="M5 4 Q12 8 19 4" />
         <path d="M5 10 Q12 14 19 10" />
         <path d="M5 16 Q12 20 19 16" />

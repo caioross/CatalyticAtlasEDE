@@ -1,94 +1,208 @@
-<div align="center"><img src="icon.png" alt="icone" width="120" height="120" />
+<div align="center">
+  <img src="icon.png" alt="Catalytic Atlas" width="108" height="108" />
 
+  <h1>Catalytic Atlas</h1>
 
+  <p><strong>Explore enzymes deeply — structure, mechanism, kinetics, dynamics. All in the browser. No server, no account, no limits.</strong></p>
+  <p><em>Explore enzimas em profundidade — estrutura, mecanismo, cinética e dinâmica. Tudo no navegador. Sem servidor, sem conta, sem limites.</em></p>
 
-# 🧬 Catalytic Atlas
+  <br/>
 
-### Explorador de Dinâmica Enzimática · *Enzyme Dynamics Explorer*
+  [![Live Demo](https://img.shields.io/badge/Live%20Demo-catalytic--atlas.vercel.app-e8b86d?style=for-the-badge&logo=vercel&logoColor=black)](https://catalytic-atlas.vercel.app)
 
-**Estrutura, mecanismo, cinética e dinâmica de enzimas — tudo no navegador, sem servidor.**
-*Enzyme structure, catalytic mechanism, kinetics and dynamics — all in the browser, no backend.*
+  <br/>
 
-![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-06B6D4?logo=tailwindcss&logoColor=white)
-![Three.js](https://img.shields.io/badge/three.js-r169-000000?logo=threedotjs&logoColor=white)
-![3Dmol.js](https://img.shields.io/badge/3Dmol.js-viewer-1f6feb)
-![License: MIT](https://img.shields.io/badge/code-MIT-green)
-![Data: CC--BY%204.0](https://img.shields.io/badge/data-CC--BY%204.0-orange)
+  ![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=nextdotjs&logoColor=white)
+  ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
+  ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+  ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-06B6D4?logo=tailwindcss&logoColor=white)
+  ![Three.js](https://img.shields.io/badge/Three.js-r169-000000?logo=threedotjs&logoColor=white)
+  ![Mol*](https://img.shields.io/badge/Mol★-4.18-4e9e8c?logo=molecule&logoColor=white)
+  [![CI](https://github.com/caioross/CatalyticAtlasEDE/actions/workflows/ci.yml/badge.svg)](https://github.com/caioross/CatalyticAtlasEDE/actions)
+  ![License: MIT](https://img.shields.io/badge/Code-MIT-22c55e)
+  ![Data: CC-BY 4.0](https://img.shields.io/badge/Data-CC--BY%204.0-f59e0b)
 
-🇧🇷 [**Português**](#-português) · 🇺🇸 [**English**](#-english)
+  <br/>
+
+  🇧🇷 [**Português**](#-português) · 🇺🇸 [**English**](#-english)
 
 </div>
 
 ---
 
 ## 🇧🇷 Português
-<a name="-português"></a>
 
 ### O que é
 
-**Catalytic Atlas** é um explorador aberto, *browser-native*, de enzimas: estrutura 3D, resíduos catalíticos, mecanismo passo a passo, cinética e — o diferencial — **dinâmica de proteínas calculada no próprio navegador**. Sem conta, sem servidor, sem banco de dados. Cada URL é um *deep-link* reprodutível.
+**Catalytic Atlas** é um explorador aberto de enzimas, *browser-native*, que coloca numa única aba o que normalmente exige cluster, *force field* e especialista.
 
-A premissa é didática e científica ao mesmo tempo: trazer para uma aba do navegador o tipo de exploração que normalmente exige cluster, *force field* e um especialista — usando o **Anisotropic Network Model (ANM)**, que captura os modos lentos e coletivos das proteínas de forma totalmente determinística e gratuita.
+Cada enzima do catálogo tem:
 
-### Recursos
+- **Estrutura 3D fiel** — renderizada com Mol\* (o mesmo motor do RCSB, PDBe e EMDB), com SSAO, delineamento e antialiasing.
+- **Mecanismo curado passo a passo** — resíduos catalíticos, estados de transição e etapa limitante, extraídos do M-CSA e da literatura primária.
+- **Cinética do registro** — kcat, KM, kcat/KM, pH, temperatura e fonte para cada entrada, com um simulador RK4 interativo.
+- **Dinâmica calculada no navegador** — o **Anisotropic Network Model (ANM)** constrói o Hessiano, decompõe os autovalores e exibe os modos lentos animados em 3D — tudo com `ml-matrix`, sem servidor.
 
-- **Catálogo curado** de 6 enzimas-paradigma, cada uma escolhida como caso clássico de ensino:
-  - Lisozima (1AKI) · Triose-fosfato isomerase / TIM (1YPI) · α-Quimotripsina (4CHA) · Anidrase carbônica II (3KS3) · Protease do HIV-1 (1HVR) · Mpro do SARS-CoV-2 (6LU7).
-- **Página por enzima** — visualizador 3D (3Dmol.js) destacando os resíduos catalíticos, *stepper* de mecanismo que conduz o destaque ao longo do ciclo catalítico, tabela de cinética, metadados e *links* para bases externas (RCSB, UniProt, M-CSA, BRENDA).
-- **Simulador cinético** — explore Michaelis-Menten interativamente a partir dos parâmetros curados.
-- **Workbench de dinâmica** — suba qualquer PDB (ou busque por ID) e rode um **ANM** no navegador:
-  - modos lentos animados em 3D (renderização customizada em **three.js**);
-  - matriz de correlação cruzada dinâmica (DCCM);
-  - *betweenness centrality* como *proxy* de *hubs* alostéricos;
-  - **ANM dirigido** (*steered*) e **ferramenta de mutação** para sondar respostas conformacionais.
-- **100% client-side** — estruturas são *streamadas* do RCSB; a matemática roda no navegador via `ml-matrix`. Reprodutível, hospedável de graça (Vercel/Cloudflare Pages/Netlify), zero superfície de LGPD.
+> Nenhum dado sai do seu navegador. Cada URL é um *deep-link* reprodutível.
+
+---
+
+### Por que ANM e não MD?
+
+| | ANM (este projeto) | Dinâmica Molecular |
+|---|---|---|
+| **Configuração** | Zero — direto no navegador | Cluster, force field, parameterização |
+| **Tempo de execução** | < 1 s para ≤ 1200 resíduos | Horas a dias |
+| **Determinismo** | ✅ Completamente | Depende de sementes/ensemble |
+| **O que captura** | Modos lentos e coletivos, B-factors, alosteria | Tudo — solvatação, reatividade, ms-µs |
+| **Melhor para** | Exploração interativa, hipóteses, ensino | Produção científica, precisão quantitativa |
+
+---
+
+### Funcionalidades
+
+<table>
+<tr>
+<td width="50%">
+
+**Visualizador 3D (Mol\*)**
+- Representações: cartoon, superfície vdW, ribbons, sticks
+- Esquemas de cor: cadeia, estrutura secundária, hidrofobicidade
+- Destaque de resíduos catalíticos por passo do mecanismo
+- Inspetor de resíduo ao clicar
+- Screenshot em alta resolução
+
+</td>
+<td width="50%">
+
+**Mecanismo Catalítico**
+- *Stepper* animado pelo ciclo catalítico
+- Highlight 3D dos resíduos ativos por etapa
+- Setas de transferência de prótons/elétrons
+- Referências primárias por passo (M-CSA, literatura)
+
+</td>
+</tr>
+<tr>
+<td>
+
+**Simulador Cinético**
+- Parâmetros curados: kcat, KM, kcat/KM
+- Integrador RK4 de Michaelis-Menten em tempo real
+- Ajuste interativo de [S], inibição competitiva/não-competitiva
+- Tabela de parâmetros por substrato, pH e temperatura
+
+</td>
+<td>
+
+**Workbench de Dinâmica (ANM)**
+- Upload de qualquer PDB ou busca por ID (RCSB)
+- Modos normais animados com coloração por amplitude
+- Matriz DCCM (correlação cruzada dinâmica)
+- *Betweenness centrality* → hubs alostéricos
+- ANM dirigido (*steered*): resposta a perturbações
+- Ferramenta de mutação: ΔΔG (Miyazawa-Jernigan)
+- *Pathway finder*: menor caminho de propagação mecânica
+
+</td>
+</tr>
+</table>
+
+---
+
+### Catálogo de Enzimas
+
+| Enzima | EC | PDB | Organismo | Destaque |
+|--------|-----|-----|-----------|----------|
+| **Lisozima** | 3.2.1.17 | [1AKI](https://www.rcsb.org/structure/1AKI) | *Gallus gallus* | Arquétipo glicosidase, mecanismo de retenção (oxocarbenium) |
+| **Triose-fosfato isomerase** | 5.3.1.1 | [1YPI](https://www.rcsb.org/structure/1YPI) | *S. cerevisiae* | Enzima "perfeita" — limitada por difusão, barril TIM |
+| **α-Quimotripsina** | 3.4.21.1 | [4CHA](https://www.rcsb.org/structure/4CHA) | *Bos taurus* | Tríade catalítica Ser–His–Asp, *oxyanion hole*, serina protease |
+| **Anidrase Carbônica II** | 4.2.1.1 | [3KS3](https://www.rcsb.org/structure/3KS3) | *Homo sapiens* | Mais rápida conhecida (~10⁶ s⁻¹), "fio de prótons", Zn²⁺ |
+| **Protease do HIV-1** | 3.4.23.16 | [1HVR](https://www.rcsb.org/structure/1HVR) | *HIV-1* | Díade Asp simétrica, flaps alostéricos, alvo de antiretrovirais |
+| **SARS-CoV-2 Mpro** | 3.4.22.69 | [6LU7](https://www.rcsb.org/structure/6LU7) | *SARS-CoV-2* | Cisteína–histidina, dímero funcional, alvo do Paxlovid |
+
+---
 
 ### Como rodar
 
+**Pré-requisitos:** Node.js ≥ 18, npm ≥ 9
+
 ```bash
+# 1. Clone e instale
+git clone https://github.com/caioross/CatalyticAtlasEDE.git
+cd CatalyticAtlasEDE
 npm install
-npm run dev        # abre em http://localhost:3000
+
+# 2. Inicie o servidor de desenvolvimento
+npm run dev
+# → http://localhost:3000
 ```
 
 ```bash
-npm run build      # build de produção (estático onde possível)
-npm run start      # serve o build
-npm run typecheck  # checagem estrita de TypeScript, sem emitir
-npm run lint       # ESLint (next lint)
+# Build de produção
+npm run build && npm run start
+
+# Verificações de qualidade
+npm run typecheck   # TypeScript strict, sem emitir
+npm run lint        # ESLint (next lint)
 ```
 
-**Adicionar uma nova enzima:**
+**Adicionar nova enzima:**
 
 ```bash
 npm run ingest -- 1RX2 --slug dhfr-1rx2
 ```
 
-O script busca metadados no RCSB, a entrada no UniProt e pesquisa o M-CSA por número EC, gerando *templates* em `public/enzymes/<slug>/`. Depois, registre o ID em `lib/enzymes.ts` e preencha a curadoria (≈1–2 h por enzima lendo o M-CSA e a literatura primária).
+O script busca metadados no RCSB, a entrada UniProt e o mecanismo no M-CSA (por número EC), gerando *scaffolds* em `public/enzymes/<slug>/`. Depois registre em `lib/enzymes.ts` e complete a curadoria (≈1–2 h por enzima lendo M-CSA e a literatura primária).
 
-### Estrutura
+---
+
+### Estrutura do Projeto
 
 ```
 app/
-  layout.tsx · page.tsx          # layout raiz + home/catálogo
-  enzyme/[id]/page.tsx           # SSG por enzima (carrega JSON de /public)
-  workbench/page.tsx             # workbench de ANM client-side
-  about/page.tsx                 # escopo, fontes, limites
+  layout.tsx · page.tsx        # Layout raiz + home/catálogo
+  enzyme/[id]/page.tsx         # SSG por enzima (carrega JSON de /public)
+  workbench/page.tsx           # Workbench ANM client-side
+  about/page.tsx               # Escopo, fontes, limites
+  sitemap.ts · robots.ts       # SEO automático
+
 components/
-  EnzymeDetailView · MechanismStepper · KineticsPanel · KineticSimulator
-  ENMAnalysis · ModeViewer · SteeredANMPanel · MolViewer (3Dmol.js)
-  viewer/                        # MolstarViewer, ThreeViewer, ThreeModeViewer,
-                                 # MutationTool, ResidueInspector, ViewerControls
+  SiteLayout.tsx               # Header (sticky) + Footer
+  EnzymeDetailView.tsx         # View principal: estrutura + mecanismo + cinética
+  EnzymeCard.tsx               # Card do catálogo
+  MechanismStepper.tsx         # Navegador de passos catalíticos
+  KineticsPanel.tsx            # Tabela de parâmetros cinéticos
+  KineticSimulator.tsx         # Simulador RK4 interativo
+  ENMAnalysis.tsx              # Workbench principal (upload/análise)
+  ModeViewer.tsx               # Visualizador de modos normais
+  SteeredANMPanel.tsx          # Resposta ANM dirigida
+  PathwayFinder.tsx            # Finder de caminhos alostéricos
+  Heatmap.tsx                  # Matriz DCCM
+  viewer/
+    MolstarViewer.tsx          # Mol* encapsulado
+    ThreeViewer.tsx            # Renderizador Three.js customizado
+    ThreeModeViewer.tsx        # Animador de modos Three.js
+    MutationTool.tsx           # Sandbox de mutação (ΔΔG Miyazawa-Jernigan)
+    ResidueInspector.tsx       # Inspetor de resíduo ao clicar
+    ViewerControls.tsx         # Controles (repr, cor, spin, screenshot)
+
 lib/
-  enzymes.ts                     # registro curado das enzimas
-  pdb.ts                         # parser PDB mínimo (apenas Cα)
-  enm.ts                         # Hessiano ANM + autodecomposição + BC + steered
+  enzymes.ts                   # Registro curado das enzimas
+  pdb.ts                       # Parser PDB mínimo (apenas Cα)
+  enm.ts                       # Hessiano ANM + autodecomposição + BC + steered
+  mutations.ts                 # Potencial Miyazawa-Jernigan
   types.ts · utils.ts
-public/enzymes/<id>/             # meta.json + mechanism.json + kinetics.json
-scripts/ingest.mjs               # scaffold de novas entradas (RCSB/UniProt/M-CSA)
+
+public/enzymes/<id>/
+  mechanism.json               # Passos mecanísticos + resíduos + referências
+  kinetics.json                # Parâmetros cinéticos curados
+
+scripts/
+  ingest.mjs                   # Scaffold de novas entradas (RCSB/UniProt/M-CSA)
 ```
+
+---
 
 ### Arquitetura
 
@@ -96,67 +210,209 @@ scripts/ingest.mjs               # scaffold de novas entradas (RCSB/UniProt/M-CS
 flowchart TD
     A[Usuário] -->|abre página da enzima| B[SSG: enzyme/id]
     B --> C[lib/enzymes.ts<br/>registro curado]
-    B --> D[public/enzymes/id<br/>mechanism + kinetics JSON]
-    B --> E[3Dmol.js<br/>estrutura via RCSB]
-    A -->|sobe/busca PDB| F[Workbench]
-    F --> G[lib/pdb.ts<br/>parser Cα]
-    G --> H[lib/enm.ts<br/>Hessiano ANM]
-    H --> I[ml-matrix<br/>autovalores/autovetores]
-    I --> J[three.js<br/>modos animados + DCCM + BC]
-    H --> K[Steered ANM + Mutation Tool]
+    B --> D[public/enzymes/id/<br/>mechanism.json + kinetics.json]
+    B --> E[Mol★ Viewer<br/>estrutura via RCSB]
+    E --> E2[SSAO + Outline + Antialiasing]
+    D --> F[MechanismStepper<br/>highlight 3D por passo]
+    D --> G[KineticsPanel + Simulator<br/>RK4 interativo]
+
+    A -->|sobe ou busca PDB| H[Workbench]
+    H --> I[lib/pdb.ts<br/>parser Cα]
+    I --> J[lib/enm.ts<br/>Hessiano ANM 3N×3N]
+    J --> K[ml-matrix<br/>autovalores + autovetores]
+    K --> L[Three.js<br/>modos animados]
+    K --> M[Heatmap<br/>DCCM cross-correlation]
+    K --> N[PerResiduePlot<br/>betweenness centrality]
+    J --> O[Steered ANM<br/>pseudo-inverso H⁺]
+    J --> P[MutationTool<br/>ΔΔG Miyazawa-Jernigan]
 ```
 
-> **Por que ANM e não MD?** MD entrega mais (solvatação, química reativa com QM/MM, dinâmica de milissegundos) mas exige cluster, *force field* e expertise. O ANM captura os movimentos lentos e coletivos de graça, é determinístico, tem um único parâmetro (o *cutoff* de contato, padrão 13 Å) e concorda surpreendentemente bem com B-factors experimentais. É a ferramenta certa para exploração interativa e didática. Para MD de produção: [OpenMM](https://openmm.org), [GROMACS](https://www.gromacs.org), [NAMD](https://www.ks.uiuc.edu/Research/namd/).
+---
 
-### Notas de método
+### Notas de Método
 
-- **Hessiano ANM** — Atilgan et al. 2001 ([doi](https://doi.org/10.1016/S0006-3495(01)76033-X)). Representação Cα, molas Hookeanas com *cutoff* radial.
-- **Coletividade** — Brüschweiler 1995. **Correlação cruzada dinâmica** — Ichiye & Karplus 1991. **Betweenness centrality** — Brandes 2001 (Dijkstra em grafo de contatos ponderado por |correlação|⁻¹).
+| Método | Implementação | Referência |
+|--------|--------------|-----------|
+| **Hessiano ANM** | Molas Hookeanas entre Cα dentro do *cutoff* (padrão 13 Å), γ = 1.0 | Atilgan et al., *Biophys J* 2001 |
+| **Coletividade** | Entropia normalizada de amplitude por modo | Brüschweiler, *JCP* 1995 |
+| **DCCM** | Cij = ⟨ΔriΔrj⟩ / √⟨Δri²⟩⟨Δrj²⟩, somada sobre modos positivos | Ichiye & Karplus, *Proteins* 1991 |
+| **Betweenness Centrality** | Dijkstra em grafo de contatos ponderado por \|Cij\|⁻¹ | Brandes, *JMMA* 2001 |
+| **Steered ANM** | Deslocamento linear via pseudo-inverso da Hessiana | Atilgan & Atilgan, 2009 |
+| **ΔΔG mutação** | Potencial de contato Miyazawa-Jernigan + volume + carga + burial | Miyazawa & Jernigan, *Macromolecules* 1985 |
+
+---
 
 ### Limites
 
-ANM de conformação única (não descreve transições nem *unfolding*); sem solvente explícito (o *proton wire* da anidrase carbônica é anotado, não simulado); sem química reativa; limite prático ≈1200 resíduos (autodecomposição O(N³)).
+- ANM de conformação única — não descreve transições nem *unfolding*
+- Sem solvente explícito (o *proton wire* da anidrase carbônica é anotado, não simulado)
+- Sem química reativa (puramente harmônico)
+- Limite prático ≈ 1.200 resíduos (autodecomposição O(N³))
+- ΔΔG é heurístico, não termodinâmico — use para hipóteses, não para decidir
+
+---
+
+### Contribuindo
+
+Contribuições são bem-vindas! As formas mais valiosas:
+
+1. **Curar uma nova enzima** — o script `ingest.mjs` gera o *scaffold*, e a curadoria real (mecanismo, cinética, resíduos) é o trabalho de valor.
+2. **Reportar erros científicos** — se um passo do mecanismo ou parâmetro cinético estiver errado, abra uma *issue* com a referência correta.
+3. **Melhorias de UI/DX** — *pull requests* são revisados.
+
+```bash
+# Fork → branch → PR
+git checkout -b feat/nova-enzima
+npm run dev
+# ... edite, teste ...
+git push origin feat/nova-enzima
+```
+
+**Prioridades no roadmap:**
+- Expandir para 20–50 enzimas cobrindo todas as 7 classes EC
+- Trajetórias MD pré-computadas (mdCATH / BioExcel) como ensembles comprimidos
+- Detecção de *pocket* no workbench
+- Perfis QM/MM como diagramas de energia interativos
+
+---
+
+### Fontes de Dados
+
+| Fonte | Licença | Uso |
+|-------|---------|-----|
+| [RCSB PDB](https://www.rcsb.org) | Domínio público | Estruturas 3D |
+| [UniProt](https://www.uniprot.org) | CC-BY 4.0 | Anotação funcional |
+| [M-CSA](https://www.ebi.ac.uk/thornton-srv/m-csa/) | CC-BY 4.0 | Mecanismos e resíduos catalíticos |
+| [SABIO-RK](https://sabiork.h-its.org) | CC-BY | Parâmetros cinéticos |
+| [BRENDA](https://www.brenda-enzymes.org) | Academic | Referência adicional |
+
+---
 
 ### Licença
 
-Código **MIT**. Dados curados em `public/enzymes/` sob **CC-BY 4.0** — atribua ao Catalytic Atlas e às fontes originais (RCSB, UniProt, M-CSA, SABIO-RK).
+**Código:** MIT — use, modifique, distribua livremente.
+
+**Dados curados** (`public/enzymes/`): **CC-BY 4.0** — atribua ao Catalytic Atlas e às fontes originais (RCSB, UniProt, M-CSA, SABIO-RK).
 
 ---
 
 ## 🇺🇸 English
-<a name="-english"></a>
 
 ### What it is
 
-**Catalytic Atlas** is an open, browser-native explorer of enzymes: 3D structure, catalytic residues, stepwise mechanism, kinetics and — the headline feature — **protein dynamics computed in the browser itself**. No account, no server, no database. Every URL is a reproducible deep-link.
+**Catalytic Atlas** is an open, browser-native enzyme explorer that puts into a single tab what normally requires a cluster, a force field, and a specialist.
 
-The premise is both pedagogical and scientific: bring the kind of exploration that normally needs a cluster, a force field and an expert into a single browser tab — using the **Anisotropic Network Model (ANM)**, which captures the slow, collective motions of proteins deterministically and for free.
+Every enzyme in the catalogue includes:
+
+- **Photo-real 3D structure** — rendered with Mol\* (the same engine used by RCSB, PDBe and EMDB), complete with screen-space ambient occlusion, an outline pass, and antialiasing.
+- **Curated step-by-step mechanism** — catalytic residues, transition states and the rate-limiting step, sourced from M-CSA and the primary literature.
+- **Kinetics from the record** — kcat, KM, kcat/KM, pH, temperature and source for every entry, with a live RK4 integrator.
+- **Dynamics computed right here** — the **Anisotropic Network Model (ANM)** builds the Hessian, decomposes it into eigenmodes and animates the slow collective motions in 3D — all via `ml-matrix`, no server needed.
+
+> No data leaves your browser. Every URL is a reproducible deep-link.
+
+---
+
+### Why ANM and not MD?
+
+| | ANM (this project) | Molecular Dynamics |
+|---|---|---|
+| **Setup** | Zero — runs in the browser | Cluster, force field, parameterisation |
+| **Runtime** | < 1 s for ≤ 1200 residues | Hours to days |
+| **Determinism** | ✅ Fully reproducible | Depends on seeds/ensemble |
+| **What it captures** | Slow collective modes, B-factors, allostery | Everything — solvation, reactivity, ms–µs |
+| **Best for** | Interactive exploration, hypothesis generation, teaching | Production science, quantitative precision |
+
+For production MD: [OpenMM](https://openmm.org) · [GROMACS](https://www.gromacs.org) · [NAMD](https://www.ks.uiuc.edu/Research/namd/)
+
+---
 
 ### Features
 
-- **Curated catalog** of 6 paradigm enzymes, each a classic teaching case:
-  - Lysozyme (1AKI) · Triosephosphate isomerase / TIM (1YPI) · α-Chymotrypsin (4CHA) · Carbonic anhydrase II (3KS3) · HIV-1 protease (1HVR) · SARS-CoV-2 Mpro (6LU7).
-- **Per-enzyme page** — 3D viewer (3Dmol.js) highlighting catalytic residues, a mechanism stepper that drives the highlight through the catalytic cycle, a kinetics table, metadata and external-database links (RCSB, UniProt, M-CSA, BRENDA).
-- **Kinetic simulator** — explore Michaelis-Menten interactively from the curated parameters.
-- **Dynamics workbench** — upload any PDB (or fetch by ID) and run an **ANM** in your browser:
-  - slow modes animated in 3D (custom **three.js** rendering);
-  - dynamic cross-correlation matrix (DCCM);
-  - betweenness centrality as a proxy for allosteric hubs;
-  - **steered ANM** and a **mutation tool** to probe conformational responses.
-- **100% client-side** — structures stream from the RCSB; the math runs in-browser via `ml-matrix`. Reproducible, free to host (Vercel/Cloudflare Pages/Netlify), zero data-privacy surface.
+<table>
+<tr>
+<td width="50%">
 
-### How to run
+**3D Viewer (Mol\*)**
+- Representations: cartoon, vdW surface, ribbons, sticks
+- Colour schemes: chain, secondary structure, hydrophobicity
+- Catalytic residue highlight driven by mechanism step
+- Per-residue inspector on click
+- High-resolution screenshot
+
+</td>
+<td width="50%">
+
+**Catalytic Mechanism**
+- Animated stepper through the catalytic cycle
+- 3D highlight of active residues per step
+- Proton/electron transfer arrows
+- Primary references per step (M-CSA, literature)
+
+</td>
+</tr>
+<tr>
+<td>
+
+**Kinetics**
+- Curated parameters: kcat, KM, kcat/KM
+- Live RK4 Michaelis–Menten integrator
+- Interactive [S] adjustment, competitive/non-competitive inhibition
+- Parameter table by substrate, pH and temperature
+
+</td>
+<td>
+
+**ANM Dynamics Workbench**
+- Upload any PDB or fetch by ID from RCSB
+- Normal modes animated with amplitude colouring
+- DCCM heatmap (dynamic cross-correlation)
+- Betweenness centrality → allosteric hubs
+- Steered ANM: conformational response to perturbations
+- Mutation sandbox: ΔΔG (Miyazawa-Jernigan)
+- Pathway finder: mechanical propagation shortest path
+
+</td>
+</tr>
+</table>
+
+---
+
+### Enzyme Catalog
+
+| Enzyme | EC | PDB | Organism | Highlight |
+|--------|-----|-----|----------|-----------|
+| **Lysozyme** | 3.2.1.17 | [1AKI](https://www.rcsb.org/structure/1AKI) | *Gallus gallus* | Retaining glycosidase archetype, oxocarbenium intermediate |
+| **Triosephosphate Isomerase** | 5.3.1.1 | [1YPI](https://www.rcsb.org/structure/1YPI) | *S. cerevisiae* | "Perfect" enzyme — diffusion-limited, TIM-barrel fold |
+| **α-Chymotrypsin** | 3.4.21.1 | [4CHA](https://www.rcsb.org/structure/4CHA) | *Bos taurus* | Catalytic triad Ser–His–Asp, oxyanion hole, serine protease |
+| **Carbonic Anhydrase II** | 4.2.1.1 | [3KS3](https://www.rcsb.org/structure/3KS3) | *Homo sapiens* | Fastest known enzyme (~10⁶ s⁻¹), proton wire, Zn²⁺ cofactor |
+| **HIV-1 Protease** | 3.4.23.16 | [1HVR](https://www.rcsb.org/structure/1HVR) | *HIV-1* | Symmetric Asp dyad, allosteric flaps, antiretroviral drug target |
+| **SARS-CoV-2 Mpro** | 3.4.22.69 | [6LU7](https://www.rcsb.org/structure/6LU7) | *SARS-CoV-2* | Cys–His dyad, functional dimer, Paxlovid target |
+
+---
+
+### Quick Start
+
+**Prerequisites:** Node.js ≥ 18, npm ≥ 9
 
 ```bash
+# 1. Clone and install
+git clone https://github.com/caioross/CatalyticAtlasEDE.git
+cd CatalyticAtlasEDE
 npm install
-npm run dev        # opens at http://localhost:3000
+
+# 2. Start the development server
+npm run dev
+# → http://localhost:3000
 ```
 
 ```bash
-npm run build      # production build (static where possible)
-npm run start      # serve the build
-npm run typecheck  # strict TypeScript check, no emit
-npm run lint       # ESLint (next lint)
+# Production build
+npm run build && npm run start
+
+# Quality checks
+npm run typecheck   # strict TypeScript, no emit
+npm run lint        # ESLint (next lint)
 ```
 
 **Add a new enzyme:**
@@ -165,27 +421,9 @@ npm run lint       # ESLint (next lint)
 npm run ingest -- 1RX2 --slug dhfr-1rx2
 ```
 
-The script fetches metadata from RCSB, the UniProt entry and searches M-CSA by EC number, scaffolding templates in `public/enzymes/<slug>/`. Then register the ID in `lib/enzymes.ts` and fill in the curation (≈1–2 h per enzyme reading M-CSA and the primary literature).
+The script fetches metadata from RCSB, the UniProt entry and searches M-CSA by EC number, generating scaffolds in `public/enzymes/<slug>/`. Then register the slug in `lib/enzymes.ts` and fill in the curation (≈1–2 h per enzyme reading M-CSA and the primary literature).
 
-### Structure
-
-```
-app/
-  layout.tsx · page.tsx          # root layout + home/catalog
-  enzyme/[id]/page.tsx           # per-enzyme SSG (loads JSON from /public)
-  workbench/page.tsx             # client-side ANM workbench
-  about/page.tsx                 # scope, sources, limits
-components/                      # detail view, mechanism stepper, kinetics,
-                                 # ENM analysis, mode viewer, steered ANM,
-                                 # MolViewer (3Dmol.js) + viewer/* (three.js)
-lib/
-  enzymes.ts                     # curated enzyme registry
-  pdb.ts                         # minimal PDB parser (Cα only)
-  enm.ts                         # ANM Hessian + eigendecomposition + BC + steered
-  types.ts · utils.ts
-public/enzymes/<id>/             # meta.json + mechanism.json + kinetics.json
-scripts/ingest.mjs               # scaffold new entries (RCSB/UniProt/M-CSA)
-```
+---
 
 ### Architecture
 
@@ -193,35 +431,94 @@ scripts/ingest.mjs               # scaffold new entries (RCSB/UniProt/M-CSA)
 flowchart TD
     A[User] -->|opens enzyme page| B[SSG: enzyme/id]
     B --> C[lib/enzymes.ts<br/>curated registry]
-    B --> D[public/enzymes/id<br/>mechanism + kinetics JSON]
-    B --> E[3Dmol.js<br/>structure from RCSB]
-    A -->|upload/fetch PDB| F[Workbench]
-    F --> G[lib/pdb.ts<br/>Cα parser]
-    G --> H[lib/enm.ts<br/>ANM Hessian]
-    H --> I[ml-matrix<br/>eigenvalues/vectors]
-    I --> J[three.js<br/>animated modes + DCCM + BC]
-    H --> K[Steered ANM + Mutation Tool]
+    B --> D[public/enzymes/id/<br/>mechanism.json + kinetics.json]
+    B --> E[Mol★ Viewer<br/>structure from RCSB]
+    E --> E2[SSAO + Outline + Antialiasing]
+    D --> F[MechanismStepper<br/>3D highlight per step]
+    D --> G[KineticsPanel + Simulator<br/>live RK4 integrator]
+
+    A -->|upload or fetch PDB| H[Workbench]
+    H --> I[lib/pdb.ts<br/>Cα parser]
+    I --> J[lib/enm.ts<br/>ANM Hessian 3N×3N]
+    J --> K[ml-matrix<br/>eigenvalues + eigenvectors]
+    K --> L[Three.js<br/>animated modes]
+    K --> M[Heatmap<br/>DCCM cross-correlation]
+    K --> N[PerResiduePlot<br/>betweenness centrality]
+    J --> O[Steered ANM<br/>pseudo-inverse H⁺]
+    J --> P[MutationTool<br/>ΔΔG Miyazawa-Jernigan]
 ```
 
-> **Why ANM and not MD?** MD gives more (solvation, reactive QM/MM chemistry, millisecond dynamics) but needs a cluster, a force field and expertise. The ANM captures slow collective motions for free, is deterministic, has a single parameter (the contact cutoff, default 13 Å) and agrees strikingly well with experimental B-factors. It is the right tool for interactive, teaching-oriented exploration. For production MD: [OpenMM](https://openmm.org), [GROMACS](https://www.gromacs.org), [NAMD](https://www.ks.uiuc.edu/Research/namd/).
+---
 
-### Method notes
+### Method Notes
 
-- **ANM Hessian** — Atilgan et al. 2001. Cα representation, Hookean springs with radial cutoff.
-- **Collectivity** — Brüschweiler 1995. **Dynamic cross-correlation** — Ichiye & Karplus 1991. **Betweenness centrality** — Brandes 2001 (Dijkstra on a contact graph weighted by |correlation|⁻¹).
+| Method | Implementation | Reference |
+|--------|---------------|-----------|
+| **ANM Hessian** | Hookean springs between Cα within contact cutoff (default 13 Å), γ = 1.0 | Atilgan et al., *Biophys J* 2001 |
+| **Collectivity** | Normalised amplitude entropy per mode | Brüschweiler, *JCP* 1995 |
+| **DCCM** | Cij = ⟨ΔriΔrj⟩ / √⟨Δri²⟩⟨Δrj²⟩, summed over positive modes | Ichiye & Karplus, *Proteins* 1991 |
+| **Betweenness Centrality** | Dijkstra on contact graph weighted by \|Cij\|⁻¹ | Brandes, *JMMA* 2001 |
+| **Steered ANM** | Linear displacement via Hessian pseudo-inverse | Atilgan & Atilgan, 2009 |
+| **Mutation ΔΔG** | Miyazawa-Jernigan contact potential + volume + charge + burial | Miyazawa & Jernigan, *Macromolecules* 1985 |
+
+---
 
 ### Limits
 
-Single-conformation ANM (no transitions or unfolding); no explicit solvent (the carbonic-anhydrase proton wire is annotated, not simulated); no reactive chemistry; practical limit ≈1200 residues (O(N³) eigendecomposition).
+- Single-conformation ANM — cannot describe transitions or unfolding
+- No explicit solvent (the carbonic-anhydrase proton wire is annotated, not simulated)
+- No reactive chemistry (purely harmonic)
+- Practical limit ≈ 1,200 residues (O(N³) eigendecomposition)
+- ΔΔG is a heuristic, not a thermodynamic calculation — use for hypothesis generation only
+
+---
+
+### Contributing
+
+Contributions are welcome. The most valuable kinds:
+
+1. **Curate a new enzyme** — `ingest.mjs` scaffolds the files; the real curation work (mechanism, kinetics, residues) is what creates value.
+2. **Report scientific errors** — if a mechanism step or kinetic parameter is wrong, open an issue with the correct reference.
+3. **UI/DX improvements** — pull requests are reviewed.
+
+```bash
+# Fork → branch → PR
+git checkout -b feat/new-enzyme
+npm run dev
+# ... edit, test ...
+git push origin feat/new-enzyme
+```
+
+**Roadmap priorities:**
+- Expand to 20–50 enzymes covering all seven EC classes
+- Pre-computed MD ensembles (mdCATH / BioExcel) as compressed streaming trajectories
+- On-the-fly pocket detection in the workbench
+- QM/MM pre-computed energy profiles as interactive diagrams
+
+---
+
+### Data Sources
+
+| Source | Licence | Use |
+|--------|---------|-----|
+| [RCSB PDB](https://www.rcsb.org) | Public domain | 3D structures |
+| [UniProt](https://www.uniprot.org) | CC-BY 4.0 | Functional annotation |
+| [M-CSA](https://www.ebi.ac.uk/thornton-srv/m-csa/) | CC-BY 4.0 | Mechanisms and catalytic residues |
+| [SABIO-RK](https://sabiork.h-its.org) | CC-BY | Kinetic parameters |
+| [BRENDA](https://www.brenda-enzymes.org) | Academic | Additional reference |
+
+---
 
 ### License
 
-Code is **MIT**. Curated data in `public/enzymes/` is **CC-BY 4.0** — attribute to Catalytic Atlas and the upstream sources (RCSB, UniProt, M-CSA, SABIO-RK).
+**Code:** MIT — use, modify, distribute freely.
+
+**Curated data** (`public/enzymes/`): **CC-BY 4.0** — attribute to Catalytic Atlas and the upstream sources (RCSB, UniProt, M-CSA, SABIO-RK).
 
 ---
 
 <div align="center">
 
-*Parte do ecossistema de projetos de **Caio**.*
+Made with rigor and care · [catalytic-atlas.vercel.app](https://catalytic-atlas.vercel.app) · [GitHub](https://github.com/caioross/CatalyticAtlasEDE)
 
 </div>
